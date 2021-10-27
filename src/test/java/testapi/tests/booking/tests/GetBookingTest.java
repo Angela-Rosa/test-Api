@@ -37,7 +37,7 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, ContractTests.class, SchemaTest.class})
-    @DisplayName("Garantir o Schema de returno de listagem de reservas")
+    @DisplayName("Garantir o Schema de retorno de listagem de reservas")
     public void validaSchemaListaDaReserva(){
         getBookingRequest.bookingReturnIds()
                 .then()
@@ -52,7 +52,7 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, ContractTests.class,SchemaTest.class})
-    @DisplayName("Garantir o Schema de returno de listagem de reservas")
+    @DisplayName("Garantir o Schema de retorno de listagem de reservas")
     public void validaSchemaDeUmaDaReserva(){
         int primeiroId= getBookingRequest.bookingReturnIds()
                 .then()
@@ -89,7 +89,8 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, E2e.class})
-    @DisplayName("Listar os IDs de reservas Por filtro invalido ") // BUG NA API
+    @DisplayName("Listar os IDs de reservas Por filtro invalido ")
+    // Bug na API- Parametro de filtro invalido na pesquisa , pois devia retornar statuscode 500.
     public void validaListaIdsDasReservasPorFiltroInvalido() {
         getBookingRequest.bookingReturnIds("XXXXX", "JuliaAR")
                 .then()
@@ -131,7 +132,8 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class,AcceptanceTest.class})
-    @DisplayName("Listar os IDs de reservas Por Chekin")
+    @DisplayName("Listar os IDs de reservas Por Checkin")
+    // Bug na API-Retorna  mas o filtro não funciona corretamente, pesquisa pela data de checkin “2018-07-10", retorna bookings sem essa data
     public void validaListaIdsDasReservasPorChekin() {
 
         getBookingRequest.bookingReturnIds("checkin", "2018-07-10")
@@ -156,19 +158,21 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class,AcceptanceTest.class})
-    @DisplayName("Listar os IDs de reservas Por Chekin e Checkout")
-    public void validaListaIdsDasReservasPorChekinCheckout() {
-        getBookingRequest.bookingReturnIds("checkin", "2018-07-10","checkout", "2019-05-14")
+    @DisplayName("Listar os IDs de reservas Por Checkout e Checkout" )
+    //Bug na API- A pesquisa pelo mesmo parametro checkout e checkout validou com Statuscode(200) mas o Statuscode esperado era 500, deveria haver conflito no retorno.
+    public void validaListaIdsDasReservasPorCheckoutCheckout() {
+        getBookingRequest.bookingReturnIds("checkout", "2019-05-14", "2019-05-14")
                 .then()
-                .statusCode(200)
-                .body("size()", greaterThan(0));
+                .statusCode(500);
+          //    .body("size()", greaterThan(0));
 //                .body("[0].bookingid", equalTo(18));
     }
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class,AcceptanceTest.class})
-    @DisplayName("Listar os IDs de reservas Por FisrtName, Chekin e Checkout")
+    @DisplayName("Listar os IDs de reservas Por FisrtName , Checkin e Checkout")
+    //Bug na API- A pesquisa retorna sem resposta  por filtro do checkin não funcionar corretamente
     public void validaListaIdsDasReservasPorFisrtNameChekinCheckout() {
         getBookingRequest.bookingReturnIds("firstname", "JuliaAR","checkin", "2018-07-10","checkout", "2019-05-14")
                 .then()

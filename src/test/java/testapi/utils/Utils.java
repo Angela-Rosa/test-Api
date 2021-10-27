@@ -12,4 +12,5 @@ public class Utils {
 }
 //C:\Users\Angela\IdeaProjects\testApi\src\test\java\testapi\tests\booking\schema
 //C:\Users\Angela\IdeaProjects\testApi\src\test\java\testapi\tests\booking\schema\bookings.json
-//C:\Users\Angela\IdeaProjects\cwi.testapi\src\test\java\br\com\cwi\testapi\tests\booking\schema
+
+

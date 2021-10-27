@@ -65,6 +65,7 @@ public class PostBookingTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, E2e.class})
     @DisplayName("Criar uma reserva enviando mais parâmetros no payload da reserva ")
+    //Bug na API- permite criar mais parametros
     public void ValidarCriarUmaReservaComPayloadInvalido() {
         postBookingRequest.PostBookingPayloadInvalid(  )
                 .then()

@@ -26,7 +26,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, AcceptanceTest.class})
-    @DisplayName("Alternar uma reserva somente utilizando o token")
+    @DisplayName("Alterar uma reserva somente utilizando o token")
     public void ValidarAlteracaoUmaReservaUtilizandoToken() {
     int primeiroId= getBookingRequest.bookingReturnIds()
             .then()
@@ -43,7 +43,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, E2e.class})
-    @DisplayName("Alternar uma reserva  utilizando o token invalido")
+    @DisplayName("Alterar uma reserva  utilizando o token invalido") //Bug na API- Houve falha na autenticação do tipo basic auth.
     public void ValidarAlteracaoUmaReservaTokenInvalido() {
         int primeiroId= getBookingRequest.bookingReturnIds()
                 .then()
@@ -70,7 +70,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class,E2e.class})
-    @DisplayName("Alternar uma reserva sem o token")
+    @DisplayName("Alterar uma reserva sem o token")
     public void ValidarAlteracaoUmaReservaSemToken() {
         int primeiroId= getBookingRequest.bookingReturnIds()
                 .then()
@@ -88,7 +88,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, AcceptanceTest.class})
-    @DisplayName("Alternar uma reserva utilizando o Basic User")
+    @DisplayName("Alterar uma reserva utilizando o Basic User")
     public void ValidarAlteracaoUmaReservaUtilizandoBasic() {
         int primeiroId= getBookingRequest.bookingReturnIds()
                 .then()

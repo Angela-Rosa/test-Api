@@ -40,6 +40,16 @@ public class GetBookingRequest {
                 .get("booking");
     }
 
+    @Step("Listagem das reservas")
+    public Response bookingReturnIds(String filtro, String valorfiltro, String valorfiltro2){
+        return given()
+                .queryParam(filtro,valorfiltro,valorfiltro2)
+                .when()
+                .log().all()
+                .get("booking");
+    }
+
+
 
     @Step("Listagem das reservas")
     public Response bookingReturnIds(String filtro, String valorfiltro,String filtro2, String valorfiltro2,String filtro3, String valorfiltro3){

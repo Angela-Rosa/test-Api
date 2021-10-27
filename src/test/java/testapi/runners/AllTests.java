@@ -1,6 +1,7 @@
 package testapi.runners;
 
 import  testapi.tests.auth.tests.PostAuthTest;
+import testapi.tests.booking.tests.DeleteBookingTest;
 import  testapi.tests.booking.tests.GetBookingTest;
 import  testapi.tests.booking.tests.PutBookingTest;
 import  testapi.tests.ping.tests.GetPingTest;
@@ -12,13 +13,13 @@ import org.junit.runners.Suite;
 @Categories.IncludeCategory( testapi.suites.AllTests.class)
 @Suite.SuiteClasses({
         GetPingTest.class,
-        GetBookingTest.class,
         PostAuthTest.class,
-        PutBookingTest.class
+        PutBookingTest.class,
+        GetBookingTest.class,
+        DeleteBookingTest.class
+
 
 })
-
-
 
 
 public class AllTests {
