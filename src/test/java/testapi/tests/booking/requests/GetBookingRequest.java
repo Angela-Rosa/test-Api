@@ -19,7 +19,6 @@ public class GetBookingRequest {
         return given()
                 .queryParams(filtro,valorfiltro)
                 .when()
-                .log().all()
                 .get("booking");
     }
 
@@ -27,7 +26,6 @@ public class GetBookingRequest {
     public Response bookingReturnEspecifcBoooking(int idbooking){
         return given()
                 .when()
-                .log().all()
                 .get("booking/"+ idbooking);
     }
 
@@ -36,7 +34,6 @@ public class GetBookingRequest {
         return given()
                 .queryParams(filtro,valorfiltro,filtro2,valorfiltro2)
                 .when()
-                .log().all()
                 .get("booking");
     }
 
@@ -45,7 +42,6 @@ public class GetBookingRequest {
         return given()
                 .queryParam(filtro,valorfiltro,valorfiltro2)
                 .when()
-                .log().all()
                 .get("booking");
     }
 
@@ -56,7 +52,6 @@ public class GetBookingRequest {
         return given()
                 .queryParams(filtro,valorfiltro,filtro2,valorfiltro2,filtro3,valorfiltro3)
                 .when()
-                .log().all()
                 .get("booking");
     }
 }

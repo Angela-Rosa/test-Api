@@ -25,7 +25,6 @@ public class PostAuthTest extends BaseTest {
         postAuthRequest.tokenReturn()
                 .then()
                 .statusCode(200)
-                .log().all()
                 .body("token",notNullValue());
     }
 }

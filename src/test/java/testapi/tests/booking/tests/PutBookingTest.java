@@ -99,7 +99,6 @@ public class PutBookingTest extends BaseTest {
         putBookingRequest.updateBookingBasicAuth(primeiroId )
                 .then()
                 .statusCode(200)
-                .log().all()
                 .body("size()", greaterThan(0));
 
     }
