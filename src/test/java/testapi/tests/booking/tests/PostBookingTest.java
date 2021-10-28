@@ -18,7 +18,7 @@ import org.junit.experimental.categories.Category;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
-@Feature("Feature - Post Booking")
+@Feature("Feature - Criar de reservas")
 public class PostBookingTest extends BaseTest {
     PostBookingRequest postBookingRequest = new PostBookingRequest();
     GetBookingRequest getBookingRequest= new GetBookingRequest();
@@ -64,32 +64,30 @@ public class PostBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, E2e.class})
-    @DisplayName("Criar uma reserva enviando mais parâmetros no payload da reserva ")
-    //Bug na API- permite criar mais parametros
+    @DisplayName("Criar uma reserva enviando payload inválido ")
     public void ValidarCriarUmaReservaComPayloadInvalido() {
         postBookingRequest.PostBookingPayloadInvalid(  )
                 .then()
                 .statusCode(500);
     }
-
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class,E2e.class})
-    @DisplayName("Validar retorno 418 quando o header Accept for invalido ")
+    @DisplayName("Validar retorno 418 quando o header Accept for inválido ")
     public void ValidarCriarUmaReservaAcceptInvalido() {
         postBookingRequest.PostBookingAcceptInvalido(  )
                 .then()
                 .statusCode(418);
     }
-
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class})
     @DisplayName("Criar uma reserva enviando mais parâmetros no payload da reserva")
+    //Bug na API- Não seria possivel criar, mas api permitiu criar mais parametros
     public void ValidarCriarUmaReservaExtraPayload() {
         postBookingRequest.PostExtraBooking()
                 .then()
-                .statusCode(200);
+                .statusCode(400);
     }
 
 
